@@ -51,7 +51,7 @@ ava.skip("[3] Should throw", (t) => {
 });
 
 fixture.forEach(([str, expected], i) => {
-  ava(`[${i}] Should tokenize ${JSON.stringify(str)} with moo`, (t) => {
+  ava.skip(`[${i}] Should tokenize ${JSON.stringify(str)} with moo`, (t) => {
     t.deepEqual(tokenizeMoo(str), expected);
   });
 });
