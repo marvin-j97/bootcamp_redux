@@ -1,5 +1,5 @@
 import ava from "ava";
-import { Token, tokenize } from "../src/task08_lexer";
+import { Token, tokenize, tokenizeMoo } from "../src/task08_lexer";
 
 const fixture: [string, Token[]][] = [
   ["", []],
@@ -48,4 +48,10 @@ ava.skip("[2] Should throw", (t) => {
 
 ava.skip("[3] Should throw", (t) => {
   t.throws(() => tokenize("!"));
+});
+
+fixture.forEach(([str, expected], i) => {
+  ava(`[${i}] Should tokenize ${JSON.stringify(str)} with moo`, (t) => {
+    t.deepEqual(tokenizeMoo(str), expected);
+  });
 });

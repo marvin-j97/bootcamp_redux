@@ -14,3 +14,5 @@ export function derivative(f: (x: number) => number): (x: number) => number {
   // TODO: implement
   return () => 0;
 }
+
+export const derive = derivative;

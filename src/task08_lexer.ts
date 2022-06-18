@@ -28,3 +28,24 @@ export function tokenize(str: string): Token[] {
 
   return tokens;
 }
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+import moo from "moo";
+
+/**
+ * Same as tokenize, but using moo
+ *
+ * https://github.com/no-context/moo
+ */
+export function tokenizeMoo(str: string): Token[] {
+  let lexer = moo.compile({
+    // TODO: implement
+  });
+  lexer.reset(str);
+  return Array.from(lexer)
+    .filter((x) => x.type === "word" || x.type === "integer")
+    .map(({ type, value }) => new Token(value, type as TokenType));
+}
