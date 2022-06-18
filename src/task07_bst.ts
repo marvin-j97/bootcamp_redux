@@ -4,6 +4,8 @@
  *
  * Internally, a (unbalanced) binary search tree
  * This yields O(log n) best-case performance for searches
+ *
+ * https://en.wikipedia.org/wiki/Set_(abstract_data_type)
  */
 export class SortedSet {
   root: TreeNode | null = null;
@@ -121,6 +123,7 @@ class TreeNode {
     return false;
   }
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
   *inOrder(): Generator<TreeNode> {
     // TODO: implement
   }
