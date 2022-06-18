@@ -18,6 +18,7 @@ export class Token {
  */
 export function tokenize(str: string): Token[] {
   // TODO: implement
+  // TIP: You may want to use regex to differentiate between words and digits
 
   const tokens: Token[] = [];
 
