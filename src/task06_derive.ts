@@ -11,8 +11,10 @@ const h = EPSILON;
  * NOTE: The limit should not be implemented and is given by h = EPSILON
  */
 export function derivative(f: (x: number) => number): (x: number) => number {
-  // TODO: implement
-  return () => 0;
+  return (x) => {
+    const dy = f(x + h) - f(x);
+    return dy / h;
+  };
 }
 
 export const derive = derivative;

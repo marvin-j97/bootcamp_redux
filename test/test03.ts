@@ -22,7 +22,7 @@ const actionName: Record<TemperatureAction, string> = {
 };
 
 fixture.forEach(([current, target, expected], i) => {
-  ava.skip(
+  ava(
     `[${i}] ${current.toFixed(1)}° -> ${target.toFixed(1)}°: ${
       actionName[expected]
     }`,

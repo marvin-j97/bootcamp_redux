@@ -33,25 +33,25 @@ const fixture: [string, Token[]][] = [
 ];
 
 fixture.forEach(([str, expected], i) => {
-  ava.skip(`[${i}] Should tokenize ${JSON.stringify(str)}`, (t) => {
+  ava(`[${i}] Should tokenize ${JSON.stringify(str)}`, (t) => {
     t.deepEqual(tokenize(str), expected);
   });
 });
 
-ava.skip("[1] Should throw", (t) => {
+ava("[1] Should throw", (t) => {
   t.throws(() => tokenize("asd 123asd"));
 });
 
-ava.skip("[2] Should throw", (t) => {
+ava("[2] Should throw", (t) => {
   t.throws(() => tokenize("asd 123 $"));
 });
 
-ava.skip("[3] Should throw", (t) => {
+ava("[3] Should throw", (t) => {
   t.throws(() => tokenize("!"));
 });
 
 fixture.forEach(([str, expected], i) => {
-  ava.skip(`[${i}] Should tokenize ${JSON.stringify(str)} with moo`, (t) => {
+  ava(`[${i}] Should tokenize ${JSON.stringify(str)} with moo`, (t) => {
     t.deepEqual(tokenizeMoo(str), expected);
   });
 });

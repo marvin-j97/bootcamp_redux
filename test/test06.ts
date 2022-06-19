@@ -34,7 +34,7 @@ const fixture: [(x: number) => number, number, number][] = [
 const ERROR_MARGIN = 0.00001;
 
 fixture.forEach(([f, x, expected], i) => {
-  ava.skip(
+  ava(
     `[${i}] Should correctly calculate derivative at x = ${x}: ${expected}`,
     (t) => {
       const df = derivative(f);

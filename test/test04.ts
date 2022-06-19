@@ -21,7 +21,7 @@ const fixture: [number[], number[]][] = [
 ];
 
 fixture.forEach(([arr, expected], i) => {
-  ava.skip(`[${i}] ${arr} should be converted to ${expected}`, (t) => {
+  ava(`[${i}] ${arr} should be converted to ${expected}`, (t) => {
     t.deepEqual(allNegatives(arr), expected);
   });
 });

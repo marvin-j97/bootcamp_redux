@@ -17,14 +17,44 @@ export class Token {
  * If the string is invalid, an error should be thrown
  */
 export function tokenize(str: string): Token[] {
-  // TODO: implement
-  // TIP: You may want to use regex to differentiate between words and digits
-
   const tokens: Token[] = [];
 
-  for (const c of str) {
-    console.log(c);
+  let buffer = "";
+  let current: TokenType | null = null;
+
+  function processBuffer() {
+    if (buffer.length && current) {
+      tokens.push(new Token(buffer, current));
+      buffer = "";
+      current = null;
+    }
   }
+
+  for (const c of str) {
+    if (c === " ") {
+      processBuffer();
+      continue;
+    }
+    if (/\d/.test(c)) {
+      if (current === "word") {
+        throw new Error(`Invalid character: ${c}`);
+      } else {
+        buffer += c;
+        current = "integer";
+      }
+    } else if (/[a-z]/i.test(c)) {
+      if (current === "integer") {
+        throw new Error(`Invalid character: ${c}`);
+      } else {
+        buffer += c;
+        current = "word";
+      }
+    } else {
+      throw new Error(`Invalid character: ${c}`);
+    }
+  }
+
+  processBuffer();
 
   return tokens;
 }
@@ -42,7 +72,9 @@ import moo from "moo";
  */
 export function tokenizeMoo(str: string): Token[] {
   let lexer = moo.compile({
-    // TODO: implement
+    word: /[a-zA-Z]+/,
+    integer: /[\d]+/,
+    WS: / +/,
   });
   lexer.reset(str);
   return Array.from(lexer)

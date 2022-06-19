@@ -24,7 +24,7 @@ function copy<T>(x: T): T {
   ];
 
   fixture.forEach(([x, a, expected], i) => {
-    ava.skip(`[${i}] paraRelu(${x}, ${a})`, async (t) => {
+    ava(`[${i}] paraRelu(${x}, ${a})`, async (t) => {
       t.is(copy(paraRelu(x, a)), expected);
     });
   });
@@ -43,7 +43,7 @@ function copy<T>(x: T): T {
   ];
 
   fixture.forEach(([x, expected], i) => {
-    ava.skip(`[${i}] relu(${x})`, async (t) => {
+    ava(`[${i}] relu(${x})`, async (t) => {
       t.is(copy(relu(x)), expected);
     });
   });
