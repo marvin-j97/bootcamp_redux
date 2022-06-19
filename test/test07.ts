@@ -14,6 +14,11 @@ function createSet() {
   return tree;
 }
 
+ava.skip("isLeaf", (t) => {
+  const tree = createSet();
+  t.is(tree.root?.isLeaf(), false);
+});
+
 ava.skip("inOrder traversal", (t) => {
   const tree = createSet();
 

@@ -1,9 +1,10 @@
 /**
  * A sorted set can efficiently return whether a key is contained in the set
+ *
  * All keys are also sorted in a way to efficiently query the min and max values
  *
- * Internally, a (unbalanced) binary search tree
- * This yields O(log n) best-case performance for searches
+ * Internally, a (unbalanced) binary search tree, this yields O(log n)best-case
+ * performance for searches
  *
  * https://en.wikipedia.org/wiki/Set_(abstract_data_type)
  */
@@ -93,6 +94,14 @@ class TreeNode {
     this.key = key;
     this.left = left;
     this.right = right;
+  }
+
+  /**
+   * Returns true if the node is a leaf (has no children)
+   */
+  isLeaf(): boolean {
+    // TODO: implement
+    return false;
   }
 
   isEmpty(): boolean {
