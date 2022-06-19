@@ -133,6 +133,7 @@ class TreeNode {
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
+  // Tip: yield* consumes another entire generator
   *inOrder(): Generator<TreeNode> {
     // TODO: implement
   }
