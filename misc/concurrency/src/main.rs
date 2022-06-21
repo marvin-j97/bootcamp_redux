@@ -1,8 +1,9 @@
-use std::thread;
+use std::thread::{sleep, spawn};
+use std::time::Duration;
 
 fn task() {
     println!("enter");
-    std::thread::sleep(std::time::Duration::from_millis(500));
+    sleep(Duration::from_millis(500));
     for i in 0..1000 {
         println!("{}", i);
     }
@@ -10,9 +11,9 @@ fn task() {
 }
 
 fn main() {
-    let t0 = thread::spawn(task);
-    let t1 = thread::spawn(task);
-    let t2 = thread::spawn(task);
+    let t0 = spawn(task);
+    let t1 = spawn(task);
+    let t2 = spawn(task);
 
     for t in vec![t0, t1, t2] {
         t.join().expect("join error");
