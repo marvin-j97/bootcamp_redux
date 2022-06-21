@@ -1,4 +1,4 @@
-use std::thread::{sleep, spawn, JoinHandle};
+use std::thread::{sleep, spawn};
 use std::time::Duration;
 
 fn task() {
@@ -11,9 +11,11 @@ fn task() {
 }
 
 fn main() {
-    let threads: Vec<JoinHandle<_>> = (0..3).map(|_| spawn(task)).collect();
+    let t0 = spawn(task);
+    let t1 = spawn(task);
+    let t2 = spawn(task);
 
-    for t in threads {
+    for t in vec![t0, t1, t2] {
         t.join().expect("join error");
     }
 }
