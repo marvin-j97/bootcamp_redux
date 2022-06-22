@@ -37,7 +37,7 @@ import { getDigits, isDigit } from "../src/task05_filter";
   ];
 
   fixture.forEach(([arr, expected], i) => {
-    ava(`[${i}] ${arr} should be converted to ${expected}`, (t) => {
+    ava(`[${i}] ${arr} should be filtered to ${expected}`, (t) => {
       t.deepEqual(getDigits(arr), expected);
     });
   });

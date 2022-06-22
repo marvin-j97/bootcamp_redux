@@ -3,7 +3,7 @@
  *
  * All keys are also sorted in a way to efficiently query the min and max values
  *
- * Internally, a (unbalanced) binary search tree, this yields O(log n)best-case
+ * Internally, a (unbalanced) binary search tree, this yields O(log n) best-case
  * performance for searches
  *
  * https://en.wikipedia.org/wiki/Set_(abstract_data_type)
@@ -155,7 +155,9 @@ class TreeNode {
     }
   }
 
+  // BONUS
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
+  // Tip: yield* consumes another entire generator
   *inOrder(): Generator<TreeNode> {
     if (this.left) {
       yield* this.left.inOrder();
@@ -167,7 +169,7 @@ class TreeNode {
   }
 
   /**
-   * Inverts the tree
+   * BONUS: Inverts the tree
    */
   invert(): void {
     const l = this.left;

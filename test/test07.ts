@@ -1,62 +1,109 @@
-import ava from "ava";
-import { SortedSet } from "../src/task07_bst";
+import ava, { ExecutionContext } from "ava";
+import { LinkedList } from "../src/task07_generics";
 
-function shuffled<T>(arr: T[]): T[] {
-  return arr.slice().sort(() => Math.random() - 0.5);
+function snapshot<T>(t: ExecutionContext, list: LinkedList<T>, arr: T[]) {
+  list.forEach((x, i) => {
+    t.is(x, arr[i]);
+  });
 }
 
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const shuffledDigits = shuffled(digits);
+{
+  const list = new LinkedList<number>();
 
-function createSet() {
-  const tree = new SortedSet();
-  shuffledDigits.forEach((x) => tree.insert(x));
-  return tree;
+  list.append(1);
+
+  ava.skip("list insert 1", (t) => {
+    snapshot(t, list, [1]);
+  });
+
+  list.append(2);
+
+  ava.skip("list insert 2", (t) => {
+    snapshot(t, list, [1, 2]);
+  });
+
+  list.append(3);
+
+  ava.skip("list insert 3", (t) => {
+    snapshot(t, list, [1, 2, 3]);
+  });
+
+  ava.skip("list forEach", (t) => {
+    let sum = 0;
+    list.forEach((x) => (sum += x));
+    t.is(sum, 6);
+  });
+
+  ava.skip("list size", (t) => {
+    t.is(list.size(), 3);
+  });
 }
 
-ava("isLeaf", (t) => {
-  const tree = createSet();
-  t.is(tree.root?.isLeaf(), false);
+ava.skip("list fromArray", (t) => {
+  const arr = [5, 4, 3, 2, 1];
+  const list = LinkedList.fromArray(arr);
+
+  snapshot(t, list, arr);
 });
 
-ava("inOrder traversal", (t) => {
-  const tree = createSet();
-
-  t.deepEqual(
-    Array.from(tree.inOrder()).map(({ key }) => key),
-    digits
-  );
+ava.skip("list fromArray", (t) => {
+  const list = LinkedList.fromArray([]);
+  t.is(list.size(), 0);
 });
 
-ava("count", (t) => {
-  const tree = createSet();
-  t.is(tree.count(), 10);
+// BONUS
+ava.skip("list prepend", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+  list.prepend(4);
+
+  snapshot(t, list, [4, 1, 2, 3]);
 });
 
-ava("contains", (t) => {
-  const tree = createSet();
+// BONUS
+ava.skip("list last", (t) => {
+  const list = new LinkedList();
+  t.is(list.last(), null);
+});
 
-  for (const x of digits) {
-    t.assert(tree.contains(x));
+// BONUS
+ava.skip("list last", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+  t.is(list.last(), 3);
+  list.append(5);
+  t.is(list.last(), 5);
+});
+
+// BONUS
+ava.skip("list iter", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+
+  let sum = 0;
+  for (const x of list.iter()) {
+    sum += x;
   }
+  t.is(sum, 6);
 });
 
-ava("minKey", (t) => {
-  const tree = createSet();
-  t.is(tree.minKey(), 0);
+// BONUS
+ava.skip("list filter", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+  const list2 = list.filter((x) => x === 2);
+
+  snapshot(t, list2, [2]);
 });
 
-ava("maxKey", (t) => {
-  const tree = createSet();
-  t.is(tree.maxKey(), 9);
+// BONUS
+ava.skip("list map", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+  const list2 = list.map((x) => x + 1);
+
+  snapshot(t, list2, [0, 1, 2]);
 });
 
-ava("inOrder traversal (inverted)", (t) => {
-  const tree = createSet();
-  tree.root?.invert();
+// BONUS
+ava.skip("list reduce", (t) => {
+  const list = LinkedList.fromArray([1, 2, 3]);
+  const sum = list.reduce((a, x) => a + x, 0);
 
-  t.deepEqual(
-    Array.from(tree.inOrder()).map(({ key }) => key),
-    digits.reverse()
-  );
+  t.is(sum, 6);
 });
