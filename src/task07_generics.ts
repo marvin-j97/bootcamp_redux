@@ -37,6 +37,7 @@ export class LinkedList<T> {
       while (curr.next) {
         curr = curr.next;
       }
+      curr.next = new ListNode(node);
     }
   }
 
@@ -44,24 +45,32 @@ export class LinkedList<T> {
    * Returns the amount of list nodes
    */
   size(): number {
-    // TODO: implement
-    // Hint: Can you use another class method to implement this?
-    return 0;
+    let count = 0;
+    for (const _ of this.iter()) {
+      count++;
+    }
+    return count;
   }
 
   /**
    * Executes a callback for every list item
    */
   forEach(fn: (item: T, index: number) => unknown): void {
-    // TODO: implement
+    let index = 0;
+    for (const x of this.iter()) {
+      fn(x, index);
+    }
   }
 
   /**
    * Converts a JS array to a linked list
    */
   static fromArray<T>(arr: T[]): LinkedList<T> {
-    // TODO: implement
-    return new LinkedList();
+    const list = new LinkedList<T>();
+    for (const item of arr) {
+      list.append(item);
+    }
+    return list;
   }
 
   /**
@@ -70,6 +79,10 @@ export class LinkedList<T> {
    * 4 + [1,2,3] -> [4,1,2,3]
    */
   prepend(node: T): void {
+    if (!this.head) {
+      this.append(node);
+    }
+
     // TODO: implement
   }
 
