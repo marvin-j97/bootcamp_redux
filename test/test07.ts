@@ -46,7 +46,7 @@ ava.skip("list fromArray", (t) => {
   snapshot(t, list, arr);
 });
 
-ava.skip("list fromArray", (t) => {
+ava.skip("list fromArray 2", (t) => {
   const list = LinkedList.fromArray([]);
   t.is(list.size(), 0);
 });
