@@ -11,8 +11,17 @@ async function task() {
   console.log("leave");
 }
 
+// change this
+let serial = false;
+
 async function main() {
-  await Promise.all([task(), task(), task()]);
+  if (serial) {
+    await task();
+    await task();
+    await task();
+  } else {
+    await Promise.all([task(), task(), task()]);
+  }
 }
 
 main();
