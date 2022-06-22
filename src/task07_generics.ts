@@ -30,7 +30,7 @@ export class LinkedList<T> {
    * Q: How could this be optimized?
    */
   append(value: T): void {
-    if (!this.head?.next) {
+    if (!this.head) {
       this.head = new ListNode(value);
     } else {
       let curr = this.head;
@@ -59,6 +59,7 @@ export class LinkedList<T> {
     let index = 0;
     for (const x of this.iter()) {
       fn(x, index);
+      index++;
     }
   }
 
@@ -94,8 +95,15 @@ export class LinkedList<T> {
    * Q: How could this be optimized?
    */
   last(): T | null {
-    // TODO: implement
-    return null;
+    if (!this.head) {
+      return null;
+    }
+
+    let curr = this.head;
+    while (curr.next) {
+      curr = curr.next;
+    }
+    return curr.value;
   }
 
   /**
@@ -104,30 +112,57 @@ export class LinkedList<T> {
    * If you add this, you could replace forEach internally
    */
   *iter(): Generator<T> {
-    // TODO: implement
+    if (!this.head) {
+      return;
+    }
+
+    yield this.head.value;
+
+    let curr = this.head;
+    while (curr.next) {
+      curr = curr.next;
+      yield curr.value;
+    }
   }
 
   /**
    * BONUS: Returns a new linked list with filtered content
    */
   filter(fn: (item: T, index: number) => boolean): LinkedList<T> {
-    // TODO: implement
-    return new LinkedList();
+    const list = new LinkedList<T>();
+
+    this.forEach((x, i) => {
+      if (fn(x, i)) {
+        list.append(x);
+      }
+    });
+
+    return list;
   }
 
   /**
    * BONUS: Returns a new linked list with mapped content
    */
   map<U>(fn: (item: T, index: number) => U): LinkedList<U> {
-    // TODO: implement
-    return new LinkedList();
+    const list = new LinkedList<U>();
+
+    this.forEach((x, i) => {
+      list.append(fn(x, i));
+    });
+
+    return list;
   }
 
   /**
    * BONUS: Reduces the list to a value
    */
   reduce<A>(fn: (accumulator: A, item: T, index: number) => A, initial: A): A {
-    // TODO: implement
-    return initial;
+    let acc = initial;
+
+    this.forEach((x, i) => {
+      acc = fn(acc, x, i);
+    });
+
+    return acc;
   }
 }
