@@ -94,6 +94,7 @@ export class LinkedList<T> {
    * Q: How could this be optimized?
    */
   last(): T | null {
+    // TODO: implement
     return null;
   }
 
