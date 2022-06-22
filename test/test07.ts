@@ -105,10 +105,10 @@ ava.skip("list filter", (t) => {
 
 // BONUS
 ava.skip("list map", (t) => {
-  const list = LinkedList.fromArray([1, 2, 3]);
+  const list = LinkedList.fromArray([0, 1, 5]);
   const list2 = list.map((x) => x + 1);
 
-  snapshot(t, list2, [0, 1, 2]);
+  snapshot(t, list2, [1, 2, 6]);
 });
 
 // BONUS
