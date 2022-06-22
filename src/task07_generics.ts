@@ -29,15 +29,15 @@ export class LinkedList<T> {
    *
    * Q: How could this be optimized?
    */
-  append(node: T): void {
+  append(value: T): void {
     if (!this.head?.next) {
-      this.head = new ListNode(node);
+      this.head = new ListNode(value);
     } else {
       let curr = this.head;
       while (curr.next) {
         curr = curr.next;
       }
-      curr.next = new ListNode(node);
+      curr.next = new ListNode(value);
     }
   }
 
@@ -78,12 +78,14 @@ export class LinkedList<T> {
    *
    * 4 + [1,2,3] -> [4,1,2,3]
    */
-  prepend(node: T): void {
+  prepend(value: T): void {
     if (!this.head) {
-      this.append(node);
+      this.append(value);
+    } else {
+      let tmp = this.head;
+      this.head = new ListNode(value);
+      this.head.next = tmp;
     }
-
-    // TODO: implement
   }
 
   /**
