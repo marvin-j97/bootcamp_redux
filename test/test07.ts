@@ -66,7 +66,7 @@ ava.skip("list last", (t) => {
 });
 
 // BONUS
-ava.skip("list last", (t) => {
+ava.skip("list last 2", (t) => {
   const list = LinkedList.fromArray([1, 2, 3]);
   t.is(list.last(), 3);
   list.append(5);
