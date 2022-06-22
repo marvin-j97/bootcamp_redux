@@ -53,9 +53,7 @@ export class LinkedList<T> {
    */
   size(): number {
     let count = 0;
-    for (const _ of this.iter()) {
-      count++;
-    }
+    this.forEach(() => count++);
     return count;
   }
 
@@ -64,8 +62,11 @@ export class LinkedList<T> {
    */
   forEach(fn: (item: T, index: number) => unknown): void {
     let index = 0;
-    for (const x of this.iter()) {
-      fn(x, index);
+    let curr = this.head;
+
+    while (curr) {
+      fn(curr.value, index);
+      curr = curr.next;
       index++;
     }
   }
@@ -104,25 +105,6 @@ export class LinkedList<T> {
   last(): T | null {
     const last = this.getLastNode();
     return last?.value || null;
-  }
-
-  /**
-   * BONUS: Returns an iterator over the linked list
-   *
-   * If you add this, you could replace forEach internally
-   */
-  *iter(): Generator<T> {
-    if (!this.head) {
-      return;
-    }
-
-    yield this.head.value;
-
-    let curr = this.head;
-    while (curr.next) {
-      curr = curr.next;
-      yield curr.value;
-    }
   }
 
   /**
