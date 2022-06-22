@@ -1,4 +1,4 @@
-function func() {
+function fn() {
   new Promise<void>((resolve) => {
     console.log("new promise!");
     resolve();
@@ -8,7 +8,7 @@ function func() {
   });
 }
 
-func();
+fn();
 
 // change this
 const block = true;

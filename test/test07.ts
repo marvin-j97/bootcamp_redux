@@ -19,15 +19,6 @@ ava.skip("isLeaf", (t) => {
   t.is(tree.root?.isLeaf(), false);
 });
 
-ava.skip("inOrder traversal", (t) => {
-  const tree = createSet();
-
-  t.deepEqual(
-    Array.from(tree.inOrder()).map(({ key }) => key),
-    digits
-  );
-});
-
 ava.skip("count", (t) => {
   const tree = createSet();
   t.is(tree.count(), 10);
@@ -51,6 +42,17 @@ ava.skip("maxKey", (t) => {
   t.is(tree.maxKey(), 9);
 });
 
+// BONUS
+ava.skip("inOrder traversal", (t) => {
+  const tree = createSet();
+
+  t.deepEqual(
+    Array.from(tree.inOrder()).map(({ key }) => key),
+    digits
+  );
+});
+
+// BONUS
 ava.skip("inOrder traversal (inverted)", (t) => {
   const tree = createSet();
   tree.root?.invert();

@@ -132,6 +132,7 @@ class TreeNode {
     return false;
   }
 
+  // BONUS
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
   // Tip: yield* consumes another entire generator
   *inOrder(): Generator<TreeNode> {
@@ -139,7 +140,7 @@ class TreeNode {
   }
 
   /**
-   * Inverts the tree
+   * BONUS: Inverts the tree
    */
   invert(): void {
     // TODO: implement
