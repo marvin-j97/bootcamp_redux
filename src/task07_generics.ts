@@ -5,7 +5,7 @@
  */
 export class ListNode<T> {
   value: T;
-  next: T | null = null;
+  next: ListNode<T> | null = null;
 
   constructor(value: T) {
     this.value = value;
@@ -26,6 +26,8 @@ export class LinkedList<T> {
    * Appends a new item
    *
    * [1,2,3] + 4 -> [1,2,3,4]
+   *
+   * Q: How could this be optimized?
    */
   append(node: T): void {
     // TODO: implement
