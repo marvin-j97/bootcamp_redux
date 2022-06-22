@@ -101,6 +101,8 @@ export class LinkedList<T> {
    * BONUS: Gets the last item
    *
    * Q: How could this be optimized?
+   *
+   * A: Use a tail pointer to provide O(1) access to the last item
    */
   last(): T | null {
     const last = this.getLastNode();
@@ -142,6 +144,9 @@ export class LinkedList<T> {
    *    (instead of front to back)
    *    Why is the singly linked list not optimal for that function?
    *    What would need to change?
+   *
+   * A: The singly linked list cannot easily be traversed in reverse
+   *    Use a doubly linked list instead
    */
   reduce<A>(fn: (accumulator: A, item: T, index: number) => A, initial: A): A {
     let acc = initial;
