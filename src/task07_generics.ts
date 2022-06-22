@@ -22,6 +22,14 @@ export class LinkedList<T> {
     return this.head?.value || null;
   }
 
+  private getLastNode(): ListNode<T> | null {
+    let curr = this.head;
+    while (curr?.next) {
+      curr = curr.next;
+    }
+    return curr;
+  }
+
   /**
    * Appends a new item
    *
@@ -33,11 +41,10 @@ export class LinkedList<T> {
     if (!this.head) {
       this.head = new ListNode(value);
     } else {
-      let curr = this.head;
-      while (curr.next) {
-        curr = curr.next;
+      const last = this.getLastNode();
+      if (last) {
+        last.next = new ListNode(value);
       }
-      curr.next = new ListNode(value);
     }
   }
 
@@ -95,15 +102,8 @@ export class LinkedList<T> {
    * Q: How could this be optimized?
    */
   last(): T | null {
-    if (!this.head) {
-      return null;
-    }
-
-    let curr = this.head;
-    while (curr.next) {
-      curr = curr.next;
-    }
-    return curr.value;
+    const last = this.getLastNode();
+    return last?.value || null;
   }
 
   /**
