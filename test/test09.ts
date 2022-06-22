@@ -14,17 +14,17 @@ function createSet() {
   return tree;
 }
 
-ava.skip("isLeaf", (t) => {
+ava("isLeaf", (t) => {
   const tree = createSet();
   t.is(tree.root?.isLeaf(), false);
 });
 
-ava.skip("count", (t) => {
+ava("count", (t) => {
   const tree = createSet();
   t.is(tree.count(), 10);
 });
 
-ava.skip("contains", (t) => {
+ava("contains", (t) => {
   const tree = createSet();
 
   for (const x of digits) {
@@ -32,18 +32,18 @@ ava.skip("contains", (t) => {
   }
 });
 
-ava.skip("minKey", (t) => {
+ava("minKey", (t) => {
   const tree = createSet();
   t.is(tree.minKey(), 0);
 });
 
-ava.skip("maxKey", (t) => {
+ava("maxKey", (t) => {
   const tree = createSet();
   t.is(tree.maxKey(), 9);
 });
 
 // BONUS
-ava.skip("inOrder traversal", (t) => {
+ava("inOrder traversal", (t) => {
   const tree = createSet();
 
   t.deepEqual(
@@ -53,7 +53,7 @@ ava.skip("inOrder traversal", (t) => {
 });
 
 // BONUS
-ava.skip("inOrder traversal (inverted)", (t) => {
+ava("inOrder traversal (inverted)", (t) => {
   const tree = createSet();
   tree.root?.invert();
 

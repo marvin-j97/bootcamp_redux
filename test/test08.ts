@@ -9,7 +9,7 @@ const fixture: [Customer[], number][] = [
 ];
 
 fixture.forEach(([arr, expected], i) => {
-  ava(`[${i}] ${arr} should be reduced to ${expected}`, (t) => {
+  ava(`[${i}] ${JSON.stringify(arr)} should be reduced to ${expected}`, (t) => {
     t.deepEqual(countSales(arr), expected);
   });
 });

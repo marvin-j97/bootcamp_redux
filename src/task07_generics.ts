@@ -28,7 +28,14 @@ export class LinkedList<T> {
    * [1,2,3] + 4 -> [1,2,3,4]
    */
   append(node: T): void {
-    // TODO: implement
+    if (!this.head?.next) {
+      this.head = new ListNode(node);
+    } else {
+      let curr = this.head;
+      while (curr.next) {
+        curr = curr.next;
+      }
+    }
   }
 
   /**
