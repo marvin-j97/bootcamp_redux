@@ -15,23 +15,34 @@ function snapshot<T>(t: ExecutionContext, list: LinkedList<T>, arr: T[]) {
   ava.skip("list insert 1", (t) => {
     snapshot(t, list, [1]);
   });
+}
 
+{
+  const list = new LinkedList<number>();
+
+  list.append(1);
   list.append(2);
 
   ava.skip("list insert 2", (t) => {
     snapshot(t, list, [1, 2]);
   });
+}
 
-  list.append(3);
+{
+  const list = new LinkedList<number>();
 
-  ava.skip("list insert 3", (t) => {
-    snapshot(t, list, [1, 2, 3]);
+  list.append(1);
+  list.append(2);
+  list.append(4);
+
+  ava.skip("list insert 2", (t) => {
+    snapshot(t, list, [1, 2, 4]);
   });
 
   ava.skip("list forEach", (t) => {
     let sum = 0;
     list.forEach((x) => (sum += x));
-    t.is(sum, 6);
+    t.is(sum, 7);
   });
 
   ava.skip("list size", (t) => {
