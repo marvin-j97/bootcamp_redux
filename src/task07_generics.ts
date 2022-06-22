@@ -29,7 +29,7 @@ export class LinkedList<T> {
    *
    * Q: How could this be optimized?
    */
-  append(node: T): void {
+  append(value: T): void {
     // TODO: implement
   }
 
@@ -62,7 +62,7 @@ export class LinkedList<T> {
    *
    * 4 + [1,2,3] -> [4,1,2,3]
    */
-  prepend(node: T): void {
+  prepend(value: T): void {
     // TODO: implement
   }
 
