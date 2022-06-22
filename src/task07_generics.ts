@@ -18,8 +18,8 @@ export class ListNode<T> {
 export class LinkedList<T> {
   private head: ListNode<T> | null = null;
 
-  first(): ListNode<T> | null {
-    return this.head;
+  first(): T | null {
+    return this.head?.value || null;
   }
 
   /**
@@ -66,8 +66,43 @@ export class LinkedList<T> {
 
   /**
    * BONUS: Gets the last item
+   *
+   * Q: How could this be optimized?
    */
   last(): T | null {
     return null;
+  }
+
+  /**
+   * BONUS: Returns an iterator over the linked list
+   *
+   * If you add this, you could replace forEach internally
+   */
+  *iter(): Generator<T> {
+    // TODO: implement
+  }
+
+  /**
+   * BONUS: Returns a new linked list with filtered content
+   */
+  filter(fn: (item: T, index: number) => boolean): LinkedList<T> {
+    // TODO: implement
+    return new LinkedList();
+  }
+
+  /**
+   * BONUS: Returns a new linked list with mapped content
+   */
+  map<U>(fn: (item: T, index: number) => U): LinkedList<U> {
+    // TODO: implement
+    return new LinkedList();
+  }
+
+  /**
+   * BONUS: Reduces the list to a value
+   */
+  reduce<A>(fn: (accumulator: A, item: T, index: number) => A, initial: A): A {
+    // TODO: implement
+    return initial;
   }
 }

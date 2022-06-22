@@ -1,66 +1,64 @@
 import ava from "ava";
-import { LinkedList } from "../src/task09_generics";
+import { SortedSet } from "../src/task09_bst";
 
-{
-  const list = new LinkedList<number>();
-  list.append(1);
-  list.append(2);
-  list.append(3);
-
-  ava.skip("list insert", (t) => {
-    const arr = [1, 2, 3];
-    list.forEach((x, i) => {
-      t.is(x, arr[i]);
-    });
-  });
-
-  ava.skip("list forEach", (t) => {
-    let sum = 0;
-    list.forEach((x) => (sum += x));
-    t.is(sum, 6);
-  });
-
-  ava.skip("list size", (t) => {
-    t.is(list.size(), 3);
-  });
+function shuffled<T>(arr: T[]): T[] {
+  return arr.slice().sort(() => Math.random() - 0.5);
 }
 
-ava.skip("list fromArray", (t) => {
-  const arr = [5, 4, 3, 2, 1];
-  const list = LinkedList.fromArray(arr);
-  t.is(list.size(), 5);
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const shuffledDigits = shuffled(digits);
 
-  list.forEach((x, i) => {
-    t.is(x, arr[i]);
-  });
+function createSet() {
+  const tree = new SortedSet();
+  shuffledDigits.forEach((x) => tree.insert(x));
+  return tree;
+}
+
+ava.skip("isLeaf", (t) => {
+  const tree = createSet();
+  t.is(tree.root?.isLeaf(), false);
 });
 
-ava.skip("list fromArray", (t) => {
-  const list = LinkedList.fromArray([]);
-  t.is(list.size(), 0);
+ava.skip("count", (t) => {
+  const tree = createSet();
+  t.is(tree.count(), 10);
+});
+
+ava.skip("contains", (t) => {
+  const tree = createSet();
+
+  for (const x of digits) {
+    t.assert(tree.contains(x));
+  }
+});
+
+ava.skip("minKey", (t) => {
+  const tree = createSet();
+  t.is(tree.minKey(), 0);
+});
+
+ava.skip("maxKey", (t) => {
+  const tree = createSet();
+  t.is(tree.maxKey(), 9);
 });
 
 // BONUS
-ava.skip("list prepend", (t) => {
-  const list = LinkedList.fromArray([1, 2, 3]);
-  list.prepend(4);
+ava.skip("inOrder traversal", (t) => {
+  const tree = createSet();
 
-  const arr = [4, 1, 2, 3];
-  list.forEach((x, i) => {
-    t.is(x, arr[i]);
-  });
+  t.deepEqual(
+    Array.from(tree.inOrder()).map(({ key }) => key),
+    digits
+  );
 });
 
 // BONUS
-ava.skip("list last", (t) => {
-  const list = new LinkedList();
-  t.is(list.last(), null);
-});
+ava.skip("inOrder traversal (inverted)", (t) => {
+  const tree = createSet();
+  tree.root?.invert();
 
-// BONUS
-ava.skip("list last", (t) => {
-  const list = LinkedList.fromArray([1, 2, 3]);
-  t.is(list.last(), 3);
-  list.append(5);
-  t.is(list.last(), 5);
+  t.deepEqual(
+    Array.from(tree.inOrder()).map(({ key }) => key),
+    digits.reverse()
+  );
 });

@@ -3,7 +3,7 @@
  *
  * All keys are also sorted in a way to efficiently query the min and max values
  *
- * Internally, a (unbalanced) binary search tree, this yields O(log n)best-case
+ * Internally, a (unbalanced) binary search tree, this yields O(log n) best-case
  * performance for searches
  *
  * https://en.wikipedia.org/wiki/Set_(abstract_data_type)
