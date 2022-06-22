@@ -94,6 +94,11 @@ export class LinkedList<T> {
 
   /**
    * BONUS: Reduces the list to a value
+   *
+   * Q: There is also the function Array.reduceRight, which reduces an array from front to back
+   *    (instead of front to back)
+   *    Why is the singly linked list not optimal for that function?
+   *    What would need to change?
    */
   reduce<A>(fn: (accumulator: A, item: T, index: number) => A, initial: A): A {
     // TODO: implement
