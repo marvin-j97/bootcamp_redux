@@ -35,7 +35,7 @@ function snapshot<T>(t: ExecutionContext, list: LinkedList<T>, arr: T[]) {
   list.append(2);
   list.append(4);
 
-  ava.skip("list insert 2", (t) => {
+  ava.skip("list insert 3", (t) => {
     snapshot(t, list, [1, 2, 4]);
   });
 
