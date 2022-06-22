@@ -77,15 +77,6 @@ export class LinkedList<T> {
   }
 
   /**
-   * BONUS: Returns an iterator over the linked list
-   *
-   * If you add this, you could replace forEach internally
-   */
-  *iter(): Generator<T> {
-    // TODO: implement
-  }
-
-  /**
    * BONUS: Returns a new linked list with filtered content
    */
   filter(fn: (item: T, index: number) => boolean): LinkedList<T> {

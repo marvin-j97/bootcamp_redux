@@ -85,17 +85,6 @@ ava.skip("list last 2", (t) => {
 });
 
 // BONUS
-ava.skip("list iter", (t) => {
-  const list = LinkedList.fromArray([1, 2, 3]);
-
-  let sum = 0;
-  for (const x of list.iter()) {
-    sum += x;
-  }
-  t.is(sum, 6);
-});
-
-// BONUS
 ava.skip("list filter", (t) => {
   const list = LinkedList.fromArray([1, 2, 3]);
   const list2 = list.filter((x) => x === 2);
