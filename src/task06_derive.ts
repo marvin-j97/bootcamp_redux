@@ -1,6 +1,8 @@
 const EPSILON = 0.00000001;
 const h = EPSILON;
 
+type NumericFunction = (x: number) => number;
+
 /**
  * Returns the approximate derivative of a function
  * https://en.wikipedia.org/wiki/Derivative
@@ -10,7 +12,7 @@ const h = EPSILON;
  *
  * NOTE: The limit ("lim") should not be implemented and is given by h = EPSILON
  */
-export function derivative(f: (x: number) => number): (x: number) => number {
+export function derivative(f: NumericFunction): NumericFunction {
   // TODO: implement
   return () => 0;
 }
