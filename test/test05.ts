@@ -14,7 +14,7 @@ import { getDigits, isDigit } from "../src/task05_filter";
   ];
 
   fixture.forEach(([x, expected], i) => {
-    ava.skip(`[${i}] ${x} should be${expected ? "" : " not"} a digit`, (t) => {
+    ava(`[${i}] ${x} should be${expected ? "" : " not"} a digit`, (t) => {
       t.is(isDigit(x), expected);
     });
   });
@@ -37,7 +37,7 @@ import { getDigits, isDigit } from "../src/task05_filter";
   ];
 
   fixture.forEach(([arr, expected], i) => {
-    ava.skip(`[${i}] ${arr} should be filtered to ${expected}`, (t) => {
+    ava(`[${i}] ${arr} should be filtered to ${expected}`, (t) => {
       t.deepEqual(getDigits(arr), expected);
     });
   });
