@@ -15,7 +15,7 @@ type NumericFunction = (x: number) => number;
 export function derivative(f: NumericFunction): NumericFunction {
   return (x) => {
     const dy = f(x + h) - f(x);
-    return dy / h;
+    return dy / h; // dx = h
   };
 }
 
