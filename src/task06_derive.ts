@@ -13,8 +13,10 @@ type NumericFunction = (x: number) => number;
  * NOTE: The limit ("lim") should not be implemented and is given by h = EPSILON
  */
 export function derivative(f: NumericFunction): NumericFunction {
-  // TODO: implement
-  return () => 0;
+  return (x) => {
+    const dy = f(x + h) - f(x);
+    return dy / h; // dx = h
+  };
 }
 
 export const derive = derivative;

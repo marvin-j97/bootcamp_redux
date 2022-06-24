@@ -11,6 +11,5 @@ export class Customer {
 }
 
 export function countSales(customers: Customer[]): number {
-  // TODO: implement
-  return 0;
+  return customers.reduce((acc, x) => acc + x.getSalesCount(), 0);
 }
