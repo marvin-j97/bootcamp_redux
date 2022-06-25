@@ -1,7 +1,7 @@
 /**
  * List node
  *
- * Just hold data and a reference to the next element (or null)
+ * Just holds data and a reference to the next element (or null)
  */
 export class ListNode<T> {
   value: T;
