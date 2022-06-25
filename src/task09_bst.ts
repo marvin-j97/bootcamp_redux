@@ -65,11 +65,7 @@ export class SortedSet {
    * If the key is already contained, nothing should be done
    */
   insert(key: number): void {
-    if (this.isEmpty()) {
-      this.root = new TreeNode(key, null, null);
-      return;
-    }
-    this.root?.insert(key);
+    // TODO: implement
   }
 
   /**
@@ -104,7 +100,8 @@ class TreeNode {
    * Returns true if the node is a leaf (has no children)
    */
   isLeaf(): boolean {
-    return !this.left && !this.right;
+    // TODO: implement
+    return false;
   }
 
   isEmpty(): boolean {
@@ -112,71 +109,40 @@ class TreeNode {
   }
 
   count(): number {
-    return 1 + (this.left?.count() || 0) + (this.right?.count() || 0);
+    // TODO: implement
+    return 0;
   }
 
   maxKey(): number | null {
-    if (!this.right) {
-      return this.key;
-    }
-    return this.right.maxKey();
+    // TODO: implement
+    return null;
   }
 
   minKey(): number | null {
-    if (!this.left) {
-      return this.key;
-    }
-    return this.left.minKey();
+    // TODO: implement
+    return null;
   }
 
   insert(key: number): void {
-    if (key <= this.key) {
-      if (this.left) {
-        this.left.insert(key);
-      } else {
-        this.left = new TreeNode(key, null, null);
-      }
-    } else {
-      if (this.right) {
-        this.right.insert(key);
-      } else {
-        this.right = new TreeNode(key, null, null);
-      }
-    }
+    // TODO: implement
   }
 
   contains(key: number): boolean {
-    if (this.key === key) {
-      return true;
-    } else if (key <= this.key) {
-      return this.left?.contains(key) || false;
-    } else {
-      return this.right?.contains(key) || false;
-    }
+    // TODO: implement
+    return false;
   }
 
   // BONUS
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
   // Tip: yield* consumes another entire generator
   *inOrder(): Generator<TreeNode> {
-    if (this.left) {
-      yield* this.left.inOrder();
-    }
-    yield this;
-    if (this.right) {
-      yield* this.right.inOrder();
-    }
+    // TODO: implement
   }
 
   /**
    * BONUS: Inverts the tree
    */
   invert(): void {
-    const l = this.left;
-    const r = this.right;
-    this.left = r;
-    this.right = l;
-    this.left?.invert();
-    this.right?.invert();
+    // TODO: implement
   }
 }

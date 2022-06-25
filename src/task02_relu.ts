@@ -10,15 +10,14 @@
  * Parametric ReLU
  */
 export function paraRelu(x: number, a = 0.01): number {
-  if (x < 0) {
-    return x * a;
-  }
-  return x;
+  // TODO: implement
+  return 0;
 }
 
 /**
  * ReLU
  */
 export function relu(x: number): number {
-  return paraRelu(x, 0);
+  // TODO: implement
+  return 0;
 }

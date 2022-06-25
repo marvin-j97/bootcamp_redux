@@ -25,8 +25,6 @@ export function getTemperatureAction(
   target: number,
   idleThreshold = DEFAULT_IDLE_THRESHOLD
 ): TemperatureAction {
-  if (Math.abs(current - target) < idleThreshold) {
-    return TemperatureAction.Idle;
-  }
-  return current > target ? TemperatureAction.Cool : TemperatureAction.Heat;
+  // TODO: implement
+  return TemperatureAction.Idle;
 }
